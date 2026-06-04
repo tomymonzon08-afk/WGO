@@ -21,11 +21,11 @@ public class Platform : MonoBehaviour
 
     private static readonly Color ColorNormal = new Color(0.91f, 0.90f, 0.87f);
     private static readonly Color ColorElimination = new Color(0.94f, 0.58f, 0.58f);
-    private static readonly Color ColorWhite = new Color(0.88f, 0.88f, 0.88f);
-    private static readonly Color ColorBlue = new Color(0.52f, 0.72f, 0.92f);
+    private static readonly Color ColorWhite = new Color(0.56f, 0.93f, 0.56f);
+    private static readonly Color ColorBlue = new Color(0.20f, 0.47f, 0.78f);
     private static readonly Color ColorPurple = new Color(0.69f, 0.66f, 0.93f);
     private static readonly Color ColorLaunch = new Color(0.98f, 0.78f, 0.46f);
-    private static readonly Color ColorTeleport = new Color(0.36f, 0.79f, 0.65f);
+    private static readonly Color ColorTeleport = new Color(0.53f, 0.81f, 0.98f); 
     private static readonly Color ColorSpawn = new Color(0.80f, 0.93f, 0.73f);
 
     private float eliminationTimer = 0f;

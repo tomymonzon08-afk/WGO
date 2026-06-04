@@ -5,7 +5,7 @@ public class GridManager : MonoBehaviour
     public GameObject platformPrefab;
     public int rows = 9;
     public int cols = 9;
-    public float cellSize = 1.1f; // espacio entre casillas
+    public float cellSize = 2.2f; // espacio entre casillas
 
     void Start()
     {
