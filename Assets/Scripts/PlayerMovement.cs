@@ -8,9 +8,11 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 8f;
     public float jumpForce = 5f;
 
+    [Header("Input")]
+    public bool isPlayerTwo = false;
+
     private Rigidbody rb;
     private bool isGrounded;
-
     private Vector2 moveInput;
     private bool isRunning;
 
@@ -24,20 +26,32 @@ public class PlayerMovement : MonoBehaviour
 
     void OnEnable()
     {
-        inputActions.Players.Enable();
-
-        inputActions.Players.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
-        inputActions.Players.Move.canceled += ctx => moveInput = Vector2.zero;
-
-        inputActions.Players.Run.performed += ctx => isRunning = true;
-        inputActions.Players.Run.canceled += ctx => isRunning = false;
-
-        inputActions.Players.Jump.performed += ctx => TryJump();
+        if (isPlayerTwo)
+        {
+            inputActions.Player2.Enable();
+            inputActions.Player2.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+            inputActions.Player2.Move.canceled += ctx => moveInput = Vector2.zero;
+            inputActions.Player2.Run.performed += ctx => isRunning = true;
+            inputActions.Player2.Run.canceled += ctx => isRunning = false;
+            inputActions.Player2.Jump.performed += ctx => TryJump();
+        }
+        else
+        {
+            inputActions.Player.Enable();
+            inputActions.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+            inputActions.Player.Move.canceled += ctx => moveInput = Vector2.zero;
+            inputActions.Player.Run.performed += ctx => isRunning = true;
+            inputActions.Player.Run.canceled += ctx => isRunning = false;
+            inputActions.Player.Jump.performed += ctx => TryJump();
+        }
     }
 
     void OnDisable()
     {
-        inputActions.Players.Disable();
+        if (isPlayerTwo)
+            inputActions.Player2.Disable();
+        else
+            inputActions.Player.Disable();
     }
 
     void FixedUpdate()
@@ -46,7 +60,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y).normalized * speed;
         rb.linearVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
 
-        // Rota el personaje hacia donde se mueve
         if (move.sqrMagnitude > 0.01f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(move);

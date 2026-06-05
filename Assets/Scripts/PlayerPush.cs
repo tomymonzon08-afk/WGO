@@ -5,8 +5,11 @@ public class PlayerPush : MonoBehaviour
 {
     [Header("Empuje")]
     public float pushForce = 12f;
-    public float pushRange = 1.5f;
+    public float pushRange = 3f;
     public LayerMask playerLayer;
+
+    [Header("Input")]
+    public bool isPlayerTwo = false;
 
     private PlayerInputActions inputActions;
 
@@ -17,41 +20,50 @@ public class PlayerPush : MonoBehaviour
 
     void OnEnable()
     {
-        inputActions.Players.Enable();
-        inputActions.Players.Push.performed += ctx => TryPush();
+        if (isPlayerTwo)
+        {
+            inputActions.Player2.Enable();
+            inputActions.Player2.Push.performed += ctx => TryPush();
+        }
+        else
+        {
+            inputActions.Player.Enable();
+            inputActions.Player.Push.performed += ctx => TryPush();
+        }
     }
 
     void OnDisable()
     {
-        inputActions.Players.Disable();
+        if (isPlayerTwo)
+            inputActions.Player2.Disable();
+        else
+            inputActions.Player.Disable();
     }
 
     void TryPush()
     {
-        // Busca un jugador en el rango frontal
         Collider[] hits = Physics.OverlapSphere(
             transform.position + transform.forward * pushRange,
-            0.6f,
+            1.2f,
             playerLayer
         );
 
         foreach (Collider hit in hits)
         {
-            if (hit.gameObject == gameObject) continue; // no se empuja a sí mismo
+            if (hit.gameObject == gameObject) continue;
 
             Rigidbody targetRb = hit.GetComponent<Rigidbody>();
             if (targetRb == null) continue;
 
             Vector3 direction = (hit.transform.position - transform.position).normalized;
-            direction.y = 0; // empuje horizontal, sin componente vertical
+            direction.y = 0;
             targetRb.AddForce(direction * pushForce, ForceMode.Impulse);
         }
     }
 
     void OnDrawGizmosSelected()
     {
-        // Muestra el rango de empuje en la Scene view
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + transform.forward * pushRange, 0.6f);
+        Gizmos.DrawWireSphere(transform.position + transform.forward * pushRange, 1.2f);
     }
 }
