@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public enum PlatformType
 {
@@ -128,10 +129,10 @@ public class Platform : MonoBehaviour
 
     void EliminatePlayer(GameObject player)
     {
-        Debug.Log($"{player.name} fue eliminado!");
-        player.SetActive(false); // por ahora lo desactivamos
         playerOnTop = null;
         eliminationTimer = 0f;
+        GameManager.Instance.PlayerEliminated(player);
+        player.SetActive(false);
     }
     float GetRequiredChargeTime()
     {
@@ -155,10 +156,21 @@ public class Platform : MonoBehaviour
         Rigidbody rb = player.GetComponent<Rigidbody>();
         if (rb == null) return;
 
-        rb.linearVelocity = Vector3.zero; // resetea velocidad actual
+        PlayerMovement pm = player.GetComponent<PlayerMovement>();
+        if (pm != null) pm.SetLaunched(true);
+
+        rb.linearVelocity = Vector3.zero;
         Vector3 force = launchDirection.normalized * launchDistance * 10f;
-        force.y = 5f; // pequeño impulso vertical para que se vea el salto
+        force.y = 5f;
         rb.AddForce(force, ForceMode.Impulse);
+
+        StartCoroutine(ResetLaunch(pm));
+    }
+
+    IEnumerator ResetLaunch(PlayerMovement pm)
+    {
+        yield return new WaitForSeconds(0.8f); // tiempo bloqueado
+        if (pm != null) pm.SetLaunched(false);
     }
     void TeleportPlayer(GameObject player)
     {

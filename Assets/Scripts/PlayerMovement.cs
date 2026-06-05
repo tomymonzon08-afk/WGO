@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private bool isRunning;
 
+    private bool isLaunched = false;
+
     private PlayerInputActions inputActions;
 
     void Awake()
@@ -56,12 +58,15 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isLaunched) return;
+
         float speed = isRunning ? runSpeed : walkSpeed;
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y).normalized * speed;
-        rb.linearVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
 
         if (move.sqrMagnitude > 0.01f)
         {
+            rb.linearVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
+
             Quaternion targetRotation = Quaternion.LookRotation(move);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 15f);
         }
@@ -86,5 +91,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Plataform"))
             isGrounded = false;
+    }
+
+    public void SetLaunched(bool value)
+    {
+        isLaunched = value;
     }
 }
