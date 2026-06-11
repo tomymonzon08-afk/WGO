@@ -159,8 +159,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   walkSpeed: 4
   runSpeed: 8
-  jumpForce: 5
-  isPlayerTwo: 0
+  jumpForce: 6
+  isPlayerTwo: 1
+  groundCheckDistance: 0.4
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &90493726106341360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPush
   pushForce: 5
-  pushRange: 1.5
+  pushRange: 1
   playerLayer:
     serializedVersion: 2
     m_Bits: 8

@@ -12,7 +12,11 @@ public class PlayerMovement : MonoBehaviour
     public bool isPlayerTwo = false;
 
     private Rigidbody rb;
-    private bool isGrounded;
+
+    [Header("Suelo")]
+    public float groundCheckDistance = 0.4f;
+    public LayerMask groundLayer;
+
     private Vector2 moveInput;
     private bool isRunning;
 
@@ -74,25 +78,15 @@ public class PlayerMovement : MonoBehaviour
 
     void TryJump()
     {
-        if (isGrounded)
+        if (IsGrounded())
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isGrounded = false;
         }
     }
-
-    void OnCollisionEnter(Collision col)
+    bool IsGrounded()
     {
-        if (col.gameObject.CompareTag("Plataform"))
-            isGrounded = true;
+        return Physics.Raycast(transform.position, Vector3.down, groundCheckDistance + 0.1f, groundLayer);
     }
-
-    void OnCollisionExit(Collision col)
-    {
-        if (col.gameObject.CompareTag("Plataform"))
-            isGrounded = false;
-    }
-
     public void SetLaunched(bool value)
     {
         isLaunched = value;
