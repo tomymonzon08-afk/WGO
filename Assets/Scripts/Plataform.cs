@@ -29,8 +29,10 @@ public class Platform : MonoBehaviour
     private static readonly Color ColorTeleport = new Color(0.53f, 0.81f, 0.98f); 
     private static readonly Color ColorSpawn = new Color(0.80f, 0.93f, 0.73f);
 
+    private const float EliminationTickRate = 1f; // daño cada 1 seg
+    private const float EliminationDamageMin = 15f;
+    private const float EliminationDamageMax = 20f;
     private float eliminationTimer = 0f;
-    private const float EliminationTime = 2f;
 
     private const float WhiteChargeTime = 2f;
     private const float BlueChargeTime = 3f;
@@ -79,6 +81,17 @@ public class Platform : MonoBehaviour
         abilityTimer = 0f;
         abilityCharged = false;
 
+        if (platformType == PlatformType.Elimination && col.gameObject.CompareTag("Player"))
+        {
+            playerOnTop = col.gameObject;
+            eliminationTimer = 0f;
+
+            // Daño inmediato al pisar
+            float damage = Random.Range(EliminationDamageMin, EliminationDamageMax);
+            PlayerHealth health = playerOnTop.GetComponent<PlayerHealth>();
+            if (health != null) health.TakeDamage(damage);
+        }
+
         if (platformType == PlatformType.Launch && col.gameObject.CompareTag("Player"))
         {
             LaunchPlayer(col.gameObject);
@@ -105,8 +118,14 @@ public class Platform : MonoBehaviour
         if (platformType == PlatformType.Elimination && playerOnTop != null)
         {
             eliminationTimer += Time.deltaTime;
-            if (eliminationTimer >= EliminationTime)
-                EliminatePlayer(playerOnTop);
+
+            if (eliminationTimer >= EliminationTickRate)
+            {
+                eliminationTimer = 0f;
+                float damage = Random.Range(EliminationDamageMin, EliminationDamageMax);
+                PlayerHealth health = playerOnTop.GetComponent<PlayerHealth>();
+                if (health != null) health.TakeDamage(damage);
+            }
         }
 
         // Lógica de habilidad

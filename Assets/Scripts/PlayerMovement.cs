@@ -22,11 +22,16 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isLaunched = false;
 
+    private bool isParalyzed = false;
+
+    private PlayerAbilities abilities;
+
     private PlayerInputActions inputActions;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        abilities = GetComponent<PlayerAbilities>();
         inputActions = new PlayerInputActions();
     }
 
@@ -40,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
             inputActions.Player2.Run.performed += ctx => isRunning = true;
             inputActions.Player2.Run.canceled += ctx => isRunning = false;
             inputActions.Player2.Jump.performed += ctx => TryJump();
+            inputActions.Player2.UseCommon.performed += ctx => abilities.UseCommon();
+            inputActions.Player2.UseSpecial.performed += ctx => abilities.UseSpecial();
+            inputActions.Player2.UseEpic.performed += ctx => abilities.UseEpic();
         }
         else
         {
@@ -49,6 +57,9 @@ public class PlayerMovement : MonoBehaviour
             inputActions.Player.Run.performed += ctx => isRunning = true;
             inputActions.Player.Run.canceled += ctx => isRunning = false;
             inputActions.Player.Jump.performed += ctx => TryJump();
+            inputActions.Player.UseCommon.performed += ctx => abilities.UseCommon();
+            inputActions.Player.UseSpecial.performed += ctx => abilities.UseSpecial();
+            inputActions.Player.UseEpic.performed += ctx => abilities.UseEpic();
         }
     }
 
@@ -62,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isLaunched) return;
+        if (isLaunched || isParalyzed) return;
 
         float speed = isRunning ? runSpeed : walkSpeed;
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y).normalized * speed;
@@ -90,5 +101,10 @@ public class PlayerMovement : MonoBehaviour
     public void SetLaunched(bool value)
     {
         isLaunched = value;
+    }
+    public void SetParalyzed(bool value)
+    {
+        isParalyzed = value;
+        rb.linearVelocity = Vector3.zero;
     }
 }

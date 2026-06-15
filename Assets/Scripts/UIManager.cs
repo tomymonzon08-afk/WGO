@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
         menuButton.onClick.AddListener(() =>
         {
             Time.timeScale = 1f;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("MainMenu");
         });
     }
 

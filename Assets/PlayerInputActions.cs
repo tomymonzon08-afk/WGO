@@ -127,6 +127,33 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseCommon"",
+                    ""type"": ""Button"",
+                    ""id"": ""d832f0ea-e3dd-49c2-9c96-79b277cc99bc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseSpecial"",
+                    ""type"": ""Button"",
+                    ""id"": ""c552e53d-cfef-46cc-a53a-f6964968e7d0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseEpic"",
+                    ""type"": ""Button"",
+                    ""id"": ""df5957f1-b60c-430f-8215-2b64d483c203"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -228,6 +255,39 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Push"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""116cb25e-9c49-42da-981a-7dee13b0e8bf"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseCommon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3849ed82-cc52-433e-a7d6-b15d1eca7058"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseSpecial"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91825a46-a9b1-4784-83fb-ad836129107f"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseEpic"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -266,6 +326,33 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Push"",
                     ""type"": ""Button"",
                     ""id"": ""cd32eed5-cf14-4929-89f5-a61505042e10"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseCommon"",
+                    ""type"": ""Button"",
+                    ""id"": ""6dcd8295-9180-488c-9454-d298bb38005a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseSpecial"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b28e729-7eb3-43d9-8724-a49c12cb92ca"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseEpic"",
+                    ""type"": ""Button"",
+                    ""id"": ""7c9d534a-b899-40b0-b4c4-9f8c3a2ce21f"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -371,6 +458,39 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Push"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27853262-d54d-4ce3-a0bf-190f96cba53c"",
+                    ""path"": ""<Keyboard>/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseCommon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d8d05bcb-c124-4bfe-96fe-772bd8f7a2e6"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseSpecial"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb7ab2d6-8fd4-4ea5-bfe5-1ae7f00bbf8c"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseEpic"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -383,12 +503,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Push = m_Player.FindAction("Push", throwIfNotFound: true);
+        m_Player_UseCommon = m_Player.FindAction("UseCommon", throwIfNotFound: true);
+        m_Player_UseSpecial = m_Player.FindAction("UseSpecial", throwIfNotFound: true);
+        m_Player_UseEpic = m_Player.FindAction("UseEpic", throwIfNotFound: true);
         // Player 2
         m_Player2 = asset.FindActionMap("Player 2", throwIfNotFound: true);
         m_Player2_Move = m_Player2.FindAction("Move", throwIfNotFound: true);
         m_Player2_Run = m_Player2.FindAction("Run", throwIfNotFound: true);
         m_Player2_Jump = m_Player2.FindAction("Jump", throwIfNotFound: true);
         m_Player2_Push = m_Player2.FindAction("Push", throwIfNotFound: true);
+        m_Player2_UseCommon = m_Player2.FindAction("UseCommon", throwIfNotFound: true);
+        m_Player2_UseSpecial = m_Player2.FindAction("UseSpecial", throwIfNotFound: true);
+        m_Player2_UseEpic = m_Player2.FindAction("UseEpic", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -474,6 +600,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Push;
+    private readonly InputAction m_Player_UseCommon;
+    private readonly InputAction m_Player_UseSpecial;
+    private readonly InputAction m_Player_UseEpic;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -501,6 +630,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Push".
         /// </summary>
         public InputAction @Push => m_Wrapper.m_Player_Push;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/UseCommon".
+        /// </summary>
+        public InputAction @UseCommon => m_Wrapper.m_Player_UseCommon;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/UseSpecial".
+        /// </summary>
+        public InputAction @UseSpecial => m_Wrapper.m_Player_UseSpecial;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/UseEpic".
+        /// </summary>
+        public InputAction @UseEpic => m_Wrapper.m_Player_UseEpic;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -539,6 +680,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Push.started += instance.OnPush;
             @Push.performed += instance.OnPush;
             @Push.canceled += instance.OnPush;
+            @UseCommon.started += instance.OnUseCommon;
+            @UseCommon.performed += instance.OnUseCommon;
+            @UseCommon.canceled += instance.OnUseCommon;
+            @UseSpecial.started += instance.OnUseSpecial;
+            @UseSpecial.performed += instance.OnUseSpecial;
+            @UseSpecial.canceled += instance.OnUseSpecial;
+            @UseEpic.started += instance.OnUseEpic;
+            @UseEpic.performed += instance.OnUseEpic;
+            @UseEpic.canceled += instance.OnUseEpic;
         }
 
         /// <summary>
@@ -562,6 +712,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Push.started -= instance.OnPush;
             @Push.performed -= instance.OnPush;
             @Push.canceled -= instance.OnPush;
+            @UseCommon.started -= instance.OnUseCommon;
+            @UseCommon.performed -= instance.OnUseCommon;
+            @UseCommon.canceled -= instance.OnUseCommon;
+            @UseSpecial.started -= instance.OnUseSpecial;
+            @UseSpecial.performed -= instance.OnUseSpecial;
+            @UseSpecial.canceled -= instance.OnUseSpecial;
+            @UseEpic.started -= instance.OnUseEpic;
+            @UseEpic.performed -= instance.OnUseEpic;
+            @UseEpic.canceled -= instance.OnUseEpic;
         }
 
         /// <summary>
@@ -603,6 +762,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player2_Run;
     private readonly InputAction m_Player2_Jump;
     private readonly InputAction m_Player2_Push;
+    private readonly InputAction m_Player2_UseCommon;
+    private readonly InputAction m_Player2_UseSpecial;
+    private readonly InputAction m_Player2_UseEpic;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player 2".
     /// </summary>
@@ -630,6 +792,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player2/Push".
         /// </summary>
         public InputAction @Push => m_Wrapper.m_Player2_Push;
+        /// <summary>
+        /// Provides access to the underlying input action "Player2/UseCommon".
+        /// </summary>
+        public InputAction @UseCommon => m_Wrapper.m_Player2_UseCommon;
+        /// <summary>
+        /// Provides access to the underlying input action "Player2/UseSpecial".
+        /// </summary>
+        public InputAction @UseSpecial => m_Wrapper.m_Player2_UseSpecial;
+        /// <summary>
+        /// Provides access to the underlying input action "Player2/UseEpic".
+        /// </summary>
+        public InputAction @UseEpic => m_Wrapper.m_Player2_UseEpic;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -668,6 +842,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Push.started += instance.OnPush;
             @Push.performed += instance.OnPush;
             @Push.canceled += instance.OnPush;
+            @UseCommon.started += instance.OnUseCommon;
+            @UseCommon.performed += instance.OnUseCommon;
+            @UseCommon.canceled += instance.OnUseCommon;
+            @UseSpecial.started += instance.OnUseSpecial;
+            @UseSpecial.performed += instance.OnUseSpecial;
+            @UseSpecial.canceled += instance.OnUseSpecial;
+            @UseEpic.started += instance.OnUseEpic;
+            @UseEpic.performed += instance.OnUseEpic;
+            @UseEpic.canceled += instance.OnUseEpic;
         }
 
         /// <summary>
@@ -691,6 +874,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Push.started -= instance.OnPush;
             @Push.performed -= instance.OnPush;
             @Push.canceled -= instance.OnPush;
+            @UseCommon.started -= instance.OnUseCommon;
+            @UseCommon.performed -= instance.OnUseCommon;
+            @UseCommon.canceled -= instance.OnUseCommon;
+            @UseSpecial.started -= instance.OnUseSpecial;
+            @UseSpecial.performed -= instance.OnUseSpecial;
+            @UseSpecial.canceled -= instance.OnUseSpecial;
+            @UseEpic.started -= instance.OnUseEpic;
+            @UseEpic.performed -= instance.OnUseEpic;
+            @UseEpic.canceled -= instance.OnUseEpic;
         }
 
         /// <summary>
@@ -759,6 +951,27 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPush(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "UseCommon" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUseCommon(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "UseSpecial" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUseSpecial(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "UseEpic" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUseEpic(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player 2" which allows adding and removing callbacks.
@@ -795,5 +1008,26 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPush(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "UseCommon" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUseCommon(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "UseSpecial" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUseSpecial(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "UseEpic" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUseEpic(InputAction.CallbackContext context);
     }
 }

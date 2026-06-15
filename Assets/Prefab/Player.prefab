@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7938603723036139559}
   - component: {fileID: 90493726106341360}
   - component: {fileID: -4802075433677190384}
+  - component: {fileID: 8127261167731673225}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -195,6 +196,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b5b89d8eec4a194b945baa5a9bc344a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAbilities
+  characterType: 0
   commonReady: 0
   specialReady: 0
   epicReady: 0
+--- !u!114 &8127261167731673225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322758760399258155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec68e2ad87f56224cb69d54f4bf532d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHP: 200
+  currentHP: 0

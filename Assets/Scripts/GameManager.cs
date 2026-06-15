@@ -18,6 +18,13 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         timeRemaining = matchDuration;
+
+        // Aplica el personaje elegido en el menú
+        PlayerAbilities p1Abilities = player1.GetComponent<PlayerAbilities>();
+        PlayerAbilities p2Abilities = player2.GetComponent<PlayerAbilities>();
+
+        if (p1Abilities != null) p1Abilities.characterType = GameData.p1Character;
+        if (p2Abilities != null) p2Abilities.characterType = GameData.p2Character;
     }
 
     void Update()
@@ -29,7 +36,7 @@ public class GameManager : MonoBehaviour
         if (timeRemaining <= 0)
         {
             timeRemaining = 0;
-            EndGame("Empate");
+            CheckTimeUp();
         }
     }
 
@@ -46,8 +53,23 @@ public class GameManager : MonoBehaviour
     void EndGame(string result)
     {
         gameOver = true;
-        Time.timeScale = 0f; // pausa el juego
+        Time.timeScale = 0f;
         UIManager.Instance.ShowResult(result);
+    }
+
+    void CheckTimeUp()
+    {
+        PlayerHealth hp1 = player1.GetComponent<PlayerHealth>();
+        PlayerHealth hp2 = player2.GetComponent<PlayerHealth>();
+
+        if (hp1 == null || hp2 == null) return;
+
+        if (hp1.currentHP > hp2.currentHP)
+            EndGame("¡Jugador 1 gana!");
+        else if (hp2.currentHP > hp1.currentHP)
+            EndGame("¡Jugador 2 gana!");
+        else
+            EndGame("¡Empate!");
     }
 
     public float GetTimeRemaining() => timeRemaining;

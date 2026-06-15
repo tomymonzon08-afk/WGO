@@ -55,6 +55,9 @@ public class PlayerPush : MonoBehaviour
             Rigidbody targetRb = hit.GetComponent<Rigidbody>();
             if (targetRb == null) continue;
 
+            PlayerAbilities targetAbilities = hit.GetComponent<PlayerAbilities>();
+            if (targetAbilities != null && targetAbilities.IsImmune) continue;
+
             Vector3 direction = (hit.transform.position - transform.position).normalized;
             direction.y = 0;
             targetRb.AddForce(direction * pushForce, ForceMode.Impulse);
