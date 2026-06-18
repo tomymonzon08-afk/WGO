@@ -10,12 +10,11 @@ Juego de batalla 1 vs 1 en una arena de plataformas 3D. Los jugadores se empujan
 - Grilla 9×9 con generación automática desde código
 - 7 tipos de plataformas con colores diferenciados
 - Movimiento del personaje: caminar, correr, saltar
-- Rotación del personaje hacia la dirección de movimiento
 - Empuje entre jugadores
 - Plataformas de eliminación (2 seg = eliminado)
 - Plataformas de habilidad (recarga común, especial y épica)
-- Plataformas de lanzamiento con dirección configurable e input bloqueado durante el vuelo
-- Plataformas de teletransporte con cooldown de 5 seg por par y cambio de color
+- Plataformas de lanzamiento 
+- Plataformas de teletransporte con cooldown de 5 seg 
 - Paredes invisibles en los bordes de la arena
 - Split screen vertical con cámara fija en tercera persona por jugador
 - Dos jugadores en el mismo teclado con controles independientes
