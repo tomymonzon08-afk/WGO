@@ -1249,7 +1249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079d11833c3c975468a0562b0b137ef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  matchDuration: 20
+  matchDuration: 600
   player1: {fileID: 559789695}
   player2: {fileID: 1579757816}
 --- !u!4 &413490695
@@ -1729,7 +1729,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -70}
+  m_AnchoredPosition: {x: -30, y: -70}
   m_SizeDelta: {x: 40, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &645799346
@@ -2530,7 +2530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20, y: -70}
+  m_AnchoredPosition: {x: 30, y: -70}
   m_SizeDelta: {x: 40, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1224871163
