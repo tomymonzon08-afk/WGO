@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
         PlayerAbilities p2Abilities = player2.GetComponent<PlayerAbilities>();
         if (p1Abilities != null) p1Abilities.characterType = GameData.p1Character;
         if (p2Abilities != null) p2Abilities.characterType = GameData.p2Character;
+
+        player1.GetComponentInChildren<PlayerNameDisplay>()?.SetName(GameData.p1Character);
+        player2.GetComponentInChildren<PlayerNameDisplay>()?.SetName(GameData.p2Character);
     }
 
     void Update()
