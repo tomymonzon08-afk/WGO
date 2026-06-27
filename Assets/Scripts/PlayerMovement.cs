@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isLaunched = false;
 
-    private bool isParalyzed = false;
+    public bool IsParalyzed { get; private set; } = false;
 
     private PlayerAbilities abilities;
 
@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isLaunched || isParalyzed) return;
+        if (isLaunched || IsParalyzed) return;
 
         float speed = isRunning ? runSpeed : walkSpeed;
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y).normalized * speed;
@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void SetParalyzed(bool value)
     {
-        isParalyzed = value;
+        IsParalyzed = value;
         rb.linearVelocity = Vector3.zero;
     }
 }

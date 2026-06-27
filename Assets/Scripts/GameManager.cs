@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,15 +15,16 @@ public class GameManager : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
 
+   
+
     void Awake()
     {
         Instance = this;
+        Time.timeScale = 1f;
         timeRemaining = matchDuration;
 
-        // Aplica el personaje elegido en el menú
         PlayerAbilities p1Abilities = player1.GetComponent<PlayerAbilities>();
         PlayerAbilities p2Abilities = player2.GetComponent<PlayerAbilities>();
-
         if (p1Abilities != null) p1Abilities.characterType = GameData.p1Character;
         if (p2Abilities != null) p2Abilities.characterType = GameData.p2Character;
     }
@@ -80,4 +82,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    private bool countdownStarted = false;
+
+    
 }

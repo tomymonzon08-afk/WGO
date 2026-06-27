@@ -21,6 +21,8 @@ public class PlayerAbilities : MonoBehaviour
     private PlayerMovement movement;
     private PlayerPush push;
 
+    public bool IsSpeedBoosted { get; private set; } = false;
+
     void Awake()
     {
         movement = GetComponent<PlayerMovement>();
@@ -145,7 +147,9 @@ public class PlayerAbilities : MonoBehaviour
     {
         float original = movement.walkSpeed;
         movement.walkSpeed *= 3f;
+        IsSpeedBoosted = true;
         yield return new WaitForSeconds(10f);
         movement.walkSpeed = original;
+        IsSpeedBoosted = false;
     }
 }

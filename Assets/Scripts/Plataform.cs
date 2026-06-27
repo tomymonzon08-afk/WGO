@@ -48,6 +48,10 @@ public class Platform : MonoBehaviour
     public bool OnCooldown { get; private set; } = false;
     private static readonly Color ColorTeleportCooldown = new Color(0.55f, 0.55f, 0.55f); // gris
 
+    private static readonly Color ColorEliminationPulse = new Color(0.6f, 0.1f, 0.1f); // rojo oscuro
+    private float pulseTimer = 0f;
+    private bool isPulsing = false;
+
     public void Initialize()
     {
         ApplyColor();
@@ -144,6 +148,23 @@ public class Platform : MonoBehaviour
                 }
             }
         }
+        // Pulso en plataformas de eliminación
+        if (platformType == PlatformType.Elimination)
+        {
+            if (playerOnTop != null)
+            {
+                isPulsing = true;
+                pulseTimer += Time.deltaTime * 4f;
+                float t = Mathf.PingPong(pulseTimer, 1f);
+                GetComponent<Renderer>().material.color = Color.Lerp(ColorElimination, ColorEliminationPulse, t);
+            }
+            else if (isPulsing)
+            {
+                isPulsing = false;
+                pulseTimer = 0f;
+                GetComponent<Renderer>().material.color = ColorElimination;
+            }
+        }
     }
 
     void EliminatePlayer(GameObject player)
@@ -203,14 +224,15 @@ public class Platform : MonoBehaviour
             return;
         }
 
-        // Teletransporta al jugador
         Vector3 targetPos = destination.transform.position;
         targetPos.y += 1f;
         player.transform.position = targetPos;
 
-        Debug.Log($"{player.name} teletransportado a {destination.name}");
+        // Flash visual
+        PlayerVisuals visuals = player.GetComponent<PlayerVisuals>();
+        if (visuals != null)
+            visuals.StartCoroutine(visuals.FlashTeleport());
 
-        // Activa cooldown en ambas casillas
         TeleportManager.Instance.ActivateCooldown(this, destination, teleportCooldown);
     }
     public void SetCooldown(bool active)
